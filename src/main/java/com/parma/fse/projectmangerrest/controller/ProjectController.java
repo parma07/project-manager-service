@@ -22,17 +22,17 @@ Logger LOGGER = LoggerFactory.getLogger(ProjectController.class);
 	@Autowired
 	private ProjectService projectService;
 	
-	@RequestMapping(path="/addProject", method = RequestMethod.POST )
+	@RequestMapping(path="/saveProject", method = RequestMethod.POST )
 	public ResponseObject<String> saveProject(@RequestBody Project project){
-		ResponseObject<String> responce = null;
+		ResponseObject<String> responseObject = null;
 		try{
 			project=projectService.saveProject(project);
-			responce = new ResponseObject<String>(project.getProject().toString(), "Success", "200");
+			responseObject = new ResponseObject<String>(project.getProject().toString(), "Success", "200");
 		}catch(Exception e){
 			LOGGER.error("Error occured while saving Project Details");
-			responce = new ResponseObject<String>(null, "FAIL", "000");
+			responseObject = new ResponseObject<String>(null, "FAIL", "000");
 		}
-		return responce;	
+		return responseObject;	
 	}
 	
 	@RequestMapping(path="/getProjects", method = RequestMethod.POST)
