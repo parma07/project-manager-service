@@ -24,4 +24,9 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findAll();
 	}
 
+	@Override
+	public List<User> getUsersWithNoProject() {
+		return userRepository.getUsersWithNoProject();
+	}
+
 }

@@ -7,4 +7,5 @@ import com.parma.fse.projectmangerrest.model.User;
 public interface UserService {
 	public User saveUser(User user);
 	public List<User> getUsers();
+	public List<User> getUsersWithNoProject();
 }

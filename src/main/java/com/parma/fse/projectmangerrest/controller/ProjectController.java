@@ -25,6 +25,7 @@ Logger LOGGER = LoggerFactory.getLogger(ProjectController.class);
 	@RequestMapping(path="/saveProject", method = RequestMethod.POST )
 	public ResponseObject<String> saveProject(@RequestBody Project project){
 		ResponseObject<String> responseObject = null;
+		LOGGER.info("PROJECT:"+project);
 		try{
 			project=projectService.saveProject(project);
 			responseObject = new ResponseObject<String>(project.getProject().toString(), "Success", "200");
@@ -32,7 +33,7 @@ Logger LOGGER = LoggerFactory.getLogger(ProjectController.class);
 			LOGGER.error("Error occured while saving Project Details");
 			responseObject = new ResponseObject<String>(null, "FAIL", "000");
 		}
-		return responseObject;	
+		return responseObject;
 	}
 	
 	@RequestMapping(path="/getProjects", method = RequestMethod.POST)

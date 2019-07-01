@@ -50,4 +50,21 @@ public class UserController {
 		}		
 		return responseObject;		
 	}
+	
+	@RequestMapping(path="/getUsersWithNoProject", method= RequestMethod.POST)
+	public ResponseObject<List<User>> getUsersWithNoProject(){
+		LOGGER.info("Inside getUser with getUsersWithNoProject:");
+		ResponseObject<List<User>> responseObject;
+		List<User> users = new ArrayList<User>();
+		
+		try{
+			users=userService.getUsersWithNoProject();
+			responseObject = new ResponseObject<List<User>>(users, "SUCCESS", "200");
+		}catch(Exception e){
+			responseObject = new ResponseObject<List<User>>(null, "FAIL", "000");
+		}		
+		return responseObject;		
+	}
+	
+	
 }

@@ -31,6 +31,8 @@ public class Project implements Serializable {
 	
 	@Column(name = "priority")
 	private Integer priority;
+	
+	//private String manager;
 
 	public Integer getProjectId() {
 		return projectId;
@@ -61,6 +63,13 @@ public class Project implements Serializable {
 	}
 	public void setPriority(Integer priority) {
 		this.priority = priority;
-	}	
+	}
+	
+	@Override
+	public String toString() {
+		return "Project [projectId=" + projectId + ", project=" + project + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", priority=" + priority + "]";
+	}
+		
 
 }
