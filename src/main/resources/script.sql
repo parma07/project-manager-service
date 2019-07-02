@@ -37,6 +37,8 @@ project VARCHAR(100),
 start_date DATE,
 end_date DATE,
 priority VARCHAR(100),
+manager INT,
+status VARCHAR(100),
 PRIMARY KEY (project_id)
 );
 
@@ -49,3 +51,5 @@ project_id INT,
 task_id INT,
 PRIMARY KEY (user_id)
 );
+
+ALTER TABLE `taskmanagerdb`.`project` ADD COLUMN `status` VARCHAR(45) NOT NULL DEFAULT 'ACTIVE' AFTER `manager`;

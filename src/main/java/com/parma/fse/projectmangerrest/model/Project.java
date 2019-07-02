@@ -32,7 +32,11 @@ public class Project implements Serializable {
 	@Column(name = "priority")
 	private Integer priority;
 	
-	//private String manager;
+	@Column(name= "manager")
+	private Integer manager;
+	
+	@Column(name = "status")
+	private String status;
 
 	public Integer getProjectId() {
 		return projectId;
@@ -64,12 +68,27 @@ public class Project implements Serializable {
 	public void setPriority(Integer priority) {
 		this.priority = priority;
 	}
-	
+	public Integer getManager() {
+		return manager;
+	}
+	public void setManager(Integer manager) {
+		this.manager = manager;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
 		return "Project [projectId=" + projectId + ", project=" + project + ", startDate=" + startDate + ", endDate="
-				+ endDate + ", priority=" + priority + "]";
+				+ endDate + ", priority=" + priority + ", manager=" + manager + ", status=" + status + "]";
 	}
+	
+	
+	
+	
 		
 
 }
