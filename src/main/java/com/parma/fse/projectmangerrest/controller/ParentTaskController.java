@@ -26,7 +26,7 @@ public class ParentTaskController {
 			responseObject = new ResponseObject<List<ParentTask>>(ParentTaskList, "SUCCESS", "200");
 		}catch(Exception e){
 			e.printStackTrace();
-			responseObject = new ResponseObject<List<ParentTask>>(null, "FAIL", "000");
+			responseObject = new ResponseObject<List<ParentTask>>(null, "FAIL", "500");
 		}
 		return responseObject;
 	}
