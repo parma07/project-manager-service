@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity()
 @Table(name="project")
@@ -38,8 +39,11 @@ public class Project implements Serializable {
 	@Column(name = "status")
 	private String status;
 	
-	private Integer noOfTasks;
-	private Integer noOfTasksCompleted;
+	@Transient
+	private Integer noOfTask;
+	
+	@Transient
+	private Integer noOfTaskCompleted;
 	
 
 	public Integer getProjectId() {
@@ -84,11 +88,24 @@ public class Project implements Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public Integer getNoOfTask() {
+		return noOfTask;
+	}
+	public void setNoOfTask(Integer noOfTask) {
+		this.noOfTask = noOfTask;
+	}
+	public Integer getNoOfTaskCompleted() {
+		return noOfTaskCompleted;
+	}
+	public void setNoOfTaskCompleted(Integer noOfTaskCompleted) {
+		this.noOfTaskCompleted = noOfTaskCompleted;
+	}
 	@Override
 	public String toString() {
 		return "Project [projectId=" + projectId + ", project=" + project + ", startDate=" + startDate + ", endDate="
 				+ endDate + ", priority=" + priority + ", manager=" + manager + ", status=" + status + "]";
 	}
+	
 	
 	
 	

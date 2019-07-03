@@ -11,17 +11,12 @@ GRANT ALL PRIVILEGES ON taskmanager.* to taskmanager@localhost;
 
 FLUSH PRIVILEGES;
 
-create table task(
-   task_id INT NOT NULL AUTO_INCREMENT,
-   parent_id INT,
-   task_name VARCHAR(100) NOT NULL,
-   priority VARCHAR(100) NOT NULL,
-   edit_enabled VARCHAR(1), 
-   start_date DATE,
-   end_date DATE,
-   project_id INT,
-   status VARCHAR(100),
-   PRIMARY KEY (task_id)
+create table users(
+user_id INT AUTO_INCREMENT,
+first_name VARCHAR(100) NOT NULL,
+last_name VARCHAR(100) NOT NULL,
+employee_id VARCHAR(100) NOT NULL,
+PRIMARY KEY (user_id)
 );
 
 create table parent_task(
@@ -29,11 +24,6 @@ create table parent_task(
    parent_task VARCHAR(100) NOT NULL,
    PRIMARY KEY (parent_id)
 );
-
-alter table task add column project_id INT;
-alter table task add column user_id INT;
-alter table task add column status VARCHAR(100) NULL DEFAULT 'OPEN';
-ALTER TABLE `taskmanagerdb`.`task` CHANGE COLUMN `status` `status` VARCHAR(100) NULL DEFAULT 'OPEN' ;
 
 create table project(
 project_id INT NOT NULL AUTO_INCREMENT,
@@ -46,17 +36,28 @@ status VARCHAR(100) NULL DEFAULT 'ACTIVE',
 PRIMARY KEY (project_id)
 );
 
-ALTER TABLE `taskmanagerdb`.`project` 
-CHANGE COLUMN `status` `status` VARCHAR(100) NULL DEFAULT 'ACTIVE' ;
-
-create table users(
-user_id INT AUTO_INCREMENT,
-first_name VARCHAR(100) NOT NULL,
-last_name VARCHAR(100) NOT NULL,
-employee_id VARCHAR(100) NOT NULL,
-project_id INT,
-task_id INT,
-PRIMARY KEY (user_id)
+create table task(
+   task_id INT NOT NULL AUTO_INCREMENT,
+   parent_id INT,
+   task_name VARCHAR(100) NOT NULL,
+   priority VARCHAR(100) NOT NULL,
+   edit_enabled VARCHAR(1), 
+   start_date DATE,
+   end_date DATE,
+   project_id INT,
+   user_id INT,
+   status VARCHAR(100) NULL DEFAULT 'OPEN',
+   PRIMARY KEY (task_id)
 );
+
+
+
+
+
+
+
+
+
+
 
 ALTER TABLE `taskmanagerdb`.`project` ADD COLUMN `status` VARCHAR(45) NOT NULL DEFAULT 'ACTIVE' AFTER `manager`;
