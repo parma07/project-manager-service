@@ -37,6 +37,10 @@ public class Project implements Serializable {
 	
 	@Column(name = "status")
 	private String status;
+	
+	private Integer noOfTasks;
+	private Integer noOfTasksCompleted;
+	
 
 	public Integer getProjectId() {
 		return projectId;

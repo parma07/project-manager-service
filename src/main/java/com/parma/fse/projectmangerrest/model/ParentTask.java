@@ -35,5 +35,9 @@ public class ParentTask implements Serializable {
 	public void setParentTask(String parentTask) {
 		this.parentTask = parentTask;
 	}
+	@Override
+	public String toString() {
+		return "ParentTask [parentId=" + parentId + ", parentTask=" + parentTask + "]";
+	}
 
 }

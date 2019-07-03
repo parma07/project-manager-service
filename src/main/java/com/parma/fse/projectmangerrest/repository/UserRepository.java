@@ -10,7 +10,7 @@ import com.parma.fse.projectmangerrest.model.User;
 
 	@Repository
 	public interface UserRepository extends JpaRepository<User, Integer> {		
-		static final String FIND_ALL_USERS_WITH_NO_PROJECT = "SELECT u FROM User u where u.projectId IS NULL";
+		static final String FIND_ALL_USERS_WITH_NO_PROJECT = "SELECT u FROM User u where u.projectId = 0 or u.projectId is null";
 		
 		@Query(FIND_ALL_USERS_WITH_NO_PROJECT)
 		List<User> getUsersWithNoProject();

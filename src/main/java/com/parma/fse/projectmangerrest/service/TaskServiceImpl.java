@@ -3,9 +3,12 @@ package com.parma.fse.projectmangerrest.service;
 import java.util.List;
 import java.util.Optional;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.parma.fse.projectmangerrest.model.Task;
 import com.parma.fse.projectmangerrest.repository.TaskRepository;
@@ -21,7 +24,9 @@ public class TaskServiceImpl implements TaskService {
 	}
 
 	@Override
+	@Transactional
 	public Task saveTask(Task task) throws DataAccessException {
+		System.out.println("Inside save task");
 		task = taskRepository.save(task); 
 		return task;
 	}

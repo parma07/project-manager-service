@@ -5,13 +5,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.parma.fse.projectmangerrest.model.Project;
@@ -44,7 +40,7 @@ Logger LOGGER = LoggerFactory.getLogger(ProjectController.class);
 	public ResponseObject<List<Project>> getProjects(){
 		ResponseObject<List<Project>> responseObject = null;
 		try{
-			List<Project> projectList = projectService.getProjects();			
+			List<Project> projectList = projectService.getProjects();		
 			responseObject = new ResponseObject<List<Project>>(projectList, "SUCCESS", "200");
 		}catch(Exception e){
 			responseObject = new ResponseObject<List<Project>>(null, "FAIL", "500");

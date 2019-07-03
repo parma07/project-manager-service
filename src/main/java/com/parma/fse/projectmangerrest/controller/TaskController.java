@@ -31,12 +31,13 @@ public class TaskController {
 	
 	@RequestMapping(path="/saveTask",method =RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseObject<String> saveTask(@RequestBody Task task) throws Exception{
-		LOGGER.info("saveTask Entry ", task.getTaskName());
-		ResponseObject<String> response;
+		LOGGER.info("saveTask Entry "+ task);
+		ResponseObject<String> response;		
 		try {
 			task=taskService.saveTask(task);
 			response= new ResponseObject<String>(task.getTaskId().toString(),"SUCCESS", "0");
 		}catch(Exception e) {
+			e.printStackTrace();
 			//LOGGER.error("Error while persisting task data", e);
 			response= new ResponseObject<String>(null,"FAILURE", "1");
 		}

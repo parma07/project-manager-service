@@ -33,9 +33,15 @@ public class Task implements Serializable {
 
 	private String priority;
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, optional = true)
 	@JoinColumn(name = "parent_id", nullable = true)
 	private ParentTask parentTask;
+	
+	@Column(name= "user_id")
+	private String userId;
+	
+	@Column(name = "project_id")
+	private String projectId;
 	
 	@Column(name = "start_Date")
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -49,6 +55,9 @@ public class Task implements Serializable {
 	
 	@Column(name = "edit_enabled")
 	private String editEnabled;
+	
+	@Column(name= "status", insertable=false)
+	private String status;
 
 	public Integer getTaskId() {
 		return taskId;
@@ -72,15 +81,7 @@ public class Task implements Serializable {
 
 	public void setPriority(String priority) {
 		this.priority = priority;
-	}
-
-	public ParentTask getParentTask() {
-		return parentTask;
-	}
-
-	public void setParentTask(ParentTask parentTask) {
-		this.parentTask = parentTask;
-	}
+	}	
 
 	public LocalDate getStartDate() {
 		return startDate;
@@ -104,7 +105,55 @@ public class Task implements Serializable {
 
 	public void setEditEnabled(String editEnabled) {
 		this.editEnabled = editEnabled;
+	}	
+
+	public String getStatus() {
+		return status;
 	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(String projectId) {
+		this.projectId = projectId;
+	}
+
+	public ParentTask getParentTask() {
+		return parentTask;
+	}
+
+	public void setParentTask(ParentTask parentTask) {
+		this.parentTask = parentTask;
+	}
+
+	@Override
+	public String toString() {
+		return "Task [taskId=" + taskId + ", taskName=" + taskName + ", priority=" + priority + ", parentTask="
+				+ parentTask + ", userId=" + userId + ", projectId=" + projectId + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", editEnabled=" + editEnabled + ", status=" + status + "]";
+	}
+
+	
+	
+	
+
+	
+	
+
+	
 	
 	
 
