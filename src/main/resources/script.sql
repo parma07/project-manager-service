@@ -1,13 +1,13 @@
-CREATE DATABASE taskmanager;
+CREATE DATABASE taskmanagerdb;
 
-USE taskmanager;
+USE taskmanagerdb;
 
 INSERT INTO mysql.user (User,Host,authentication_string,ssl_cipher,x509_issuer,x509_subject)
-VALUES('taskmanager','localhost',PASSWORD('taskmanager'),'','','');
+VALUES('taskmanagerdb','localhost',PASSWORD('taskmanagerdb'),'','','');
 
 FLUSH PRIVILEGES;
 
-GRANT ALL PRIVILEGES ON taskmanager.* to taskmanager@localhost;
+GRANT ALL PRIVILEGES ON taskmanagerdb.* to taskmanagerdb@localhost;
 
 FLUSH PRIVILEGES;
 
