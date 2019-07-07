@@ -1,6 +1,7 @@
 package com.parma.fse.projectmangerrest.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +42,21 @@ Logger LOGGER = LoggerFactory.getLogger(ProjectController.class);
 		ResponseObject<List<Project>> responseObject = null;
 		try{
 			List<Project> projectList = projectService.getProjects();		
+			responseObject = new ResponseObject<List<Project>>(projectList, "SUCCESS", "200");
+		}catch(Exception e){
+			responseObject = new ResponseObject<List<Project>>(null, "FAIL", "500");
+		}
+		return responseObject;
+	}
+	
+	@RequestMapping(path="/getAllActiveProjects", method = RequestMethod.POST)
+	public ResponseObject<List<Project>> getAllActiveProjects(){
+		ResponseObject<List<Project>> responseObject = null;
+		try{
+			List<Project> projectList = projectService.getProjects();
+			LOGGER.info("Project LIst before:::"+projectList.size());
+			projectList=projectList.stream().filter(p -> p.getStatus().equalsIgnoreCase("ACTIVE")).collect(Collectors.toList());
+			LOGGER.info("Project LIst after:::"+projectList.size());
 			responseObject = new ResponseObject<List<Project>>(projectList, "SUCCESS", "200");
 		}catch(Exception e){
 			responseObject = new ResponseObject<List<Project>>(null, "FAIL", "500");

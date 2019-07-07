@@ -25,8 +25,7 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	@Transactional
-	public Task saveTask(Task task) throws DataAccessException {
-		System.out.println("Inside save task");
+	public Task saveTask(Task task) throws DataAccessException {		
 		task = taskRepository.save(task); 
 		return task;
 	}
