@@ -36,7 +36,7 @@ public class Project implements Serializable {
 	@Column(name= "manager")
 	private Integer manager;
 	
-	@Column(name = "status")
+	@Column(name = "status", insertable=false)
 	private String status;
 	
 	@Transient

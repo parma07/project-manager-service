@@ -43,6 +43,7 @@ public class TaskServiceImpl implements TaskService {
 	}
 
 	@Override
+	@Transactional
 	public void updateTaskEditEnabled(Task task) {
 		taskRepository.updateTaskEditEnabled(task.getEditEnabled(), task.getTaskId());	
 	}

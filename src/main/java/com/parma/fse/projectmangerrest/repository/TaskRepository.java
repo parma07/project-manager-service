@@ -11,6 +11,6 @@ import com.parma.fse.projectmangerrest.model.Task;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Integer>{
 	@Modifying(clearAutomatically = true)
-	@Query("update Task task set task.editEnabled =:editEnabled, task.endDate = sysdate()  where task.taskId =:taskId")
+	@Query("update Task task set task.editEnabled =:editEnabled, task.endDate = sysdate(), task.status = 'COMPLETED'  where task.taskId =:taskId")
 	public void updateTaskEditEnabled(@Param("editEnabled") String editEnabled, @Param("taskId") Integer taskId);
 }

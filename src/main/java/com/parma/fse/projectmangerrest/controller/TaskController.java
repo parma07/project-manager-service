@@ -77,12 +77,13 @@ public class TaskController {
 	}
 	@RequestMapping(path="/updateTaskEditEnabled",method =RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseObject<String> updateTaskEditEnabled(@RequestBody Task task)throws Exception{
-		LOGGER.debug("saveTask Entry ", task.getTaskName());
+		LOGGER.info("completetTask Entry {}", task);
 		ResponseObject<String> response;
 		try {
-			taskService.updateTaskEditEnabled(task);;
+			taskService.updateTaskEditEnabled(task);
 			response= new ResponseObject<String>(task.getTaskId().toString(),"SUCCESS", "0");
 		}catch(Exception e) {
+			e.printStackTrace();
 			LOGGER.error("Error while persisting task data", e);
 			response= new ResponseObject<String>(null,"FAILURE", "1");
 		}
